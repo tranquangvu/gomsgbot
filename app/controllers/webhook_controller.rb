@@ -8,7 +8,7 @@ class WebhookController < ApplicationController
   end
 
   def receiver
-    MessengerReceiverService.new(params[:entry]).reply if params[:object] == 'page'
+    MessengerService.new(params[:entry]).reply if params[:object] == 'page'
     render json: nil, status: :ok
   end
 end

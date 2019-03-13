@@ -3,6 +3,14 @@ class Messenger::SendApi
     { recipient: { id: recipient_id }, message: message }
   end
 
+  def self.typing_on(recipient_id:)
+    { recipient: { id: recipient_id }, sender_action: 'typing_on' }
+  end
+
+  def self.typing_off(recipient_id:)
+    { recipient: { id: recipient_id }, sender_action: 'typing_off' }
+  end
+
   def self.quick_reply(content_type: 'text', title: , payload: nil)
     { content_type: content_type, title: title, payload: payload || title.upcase.gsub(' ', '_') }
   end
